@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <title>Nice day</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Nice day</h1>
+    <div ng-controller="getWeather">
+      <form>
+        <div class="form-group">
+            <label class="bmd-label-floating" for="niceDayTempId">Temperature: {{userTemp}}</label>
+            <input type="text" class="form-control" id="niceDayTempId" ng-model="niceDayTemp" />
+            <span class="bmd-help" ng-show="!niceDayTemp.length">Required - Should be in Celsius</span>
+        </div>
+        <div class="form-group">
+          <label class="bmd-label-floating" for="niceDayHumId">Humidity: {{userHum}} </label>
+          <input type="text" class="form-control" ng-model="niceDayHum" id="niceDayHumId"  />
+          <span class="bmd-help" ng-show="!niceDayHum.length">Required - Should be in percentage: 0-100</span>
+        </div>
+        <div class="form-group">
+          <label for="weather_status" class="bmd-label-floating">Weather Condition</label>
+            <select ng-model="w_status" id="weather_status" class="form-control">
+              <option ng-repeat="condition in weather_status" value="{{condition}}">{{condition}}</option>
+            </select>
+            <span class="cmd-help">You selected: {{w_status}}</span>
+            <span ng-show="!w_status.length">Required - For a positiv result should choose one</span>
+        </div>
+        <div class="alert alert-dark" role="alert">
+          <div class="alert alert-success" role="alert">{{niceDayMsg}}</div>
+          <div class="p-3 mb-2 bg-dark text-white">
+          <div>
+              Current Temperature:
+            <span ng-repeat= "item in data">
+              {{item.main.temp}}
+            </span>
+          </div>
+          <div>Current Humidity:
+            <span ng-repeat= "item in data">
+              {{item.main.humidity}}
+            </span>
+          </div>
+            </div>
+        </div>
+        </div>
+      </form>
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+  </body>
+</html>
