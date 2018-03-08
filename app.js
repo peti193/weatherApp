@@ -21,7 +21,6 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
 
             // Open weather map current weather response 
             $scope.data = response;
-            console.log(response);
 
             // Main weather data, temperature, humidity etc...
             main_data = [];
