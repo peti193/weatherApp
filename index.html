@@ -19,14 +19,19 @@
     <div ng-controller="getWeather">
       <form>
         <div class="form-group">
-            <label class="bmd-label-floating" for="niceDayTempId">Temperature: {{userTemp}}</label>
+            <label class="bmd-label-floating" for="niceDayTempId">Temperature: {{niceDayTemp}}</label>
             <input type="text" class="form-control" id="niceDayTempId" ng-model="niceDayTemp" />
             <span class="bmd-help" ng-show="!niceDayTemp.length">Required - Should be in Celsius</span>
         </div>
         <div class="form-group">
-          <label class="bmd-label-floating" for="niceDayHumId">Humidity: {{userHum}} </label>
+          <label class="bmd-label-floating" for="niceDayHumId">Humidity: {{niceDayHum}} </label>
           <input type="text" class="form-control" ng-model="niceDayHum" id="niceDayHumId"  />
           <span class="bmd-help" ng-show="!niceDayHum.length">Required - Should be in percentage: 0-100</span>
+        </div>
+        <div class="form-group">
+          <label class="bmd-label-floating" for="windSpeedId">Windspeed: {{windSpeedU}}</label>
+          <input type="text" class="form-control" id="windSpeedId" ng-model="windSpeedU"  />
+          <span class="bmd-help" ng-show="!windSpeed.length">Required - Should be a positiv number: 0-100</span>
         </div>
         <div class="form-group">
           <label for="weather_status" class="bmd-label-floating">Weather Condition</label>
@@ -39,18 +44,27 @@
         <div class="alert alert-dark" role="alert">
           <div class="alert alert-success" role="alert">{{niceDayMsg}}</div>
           <div class="p-3 mb-2 bg-dark text-white">
+            <div>Now</div>
           <div>
-              Current Temperature:
+              Temperature:
             <span ng-repeat= "item in data">
               {{item.main.temp}}
             </span>
           </div>
-          <div>Current Humidity:
+          <div>Humidity:
             <span ng-repeat= "item in data">
               {{item.main.humidity}}
             </span>
           </div>
-            </div>
+          <div>
+             Windspeed:
+            <span>{{windSpeed}}</span>
+          </div>
+          <div>
+             Visbility:
+            <span>{{weatherStatus}}</span>
+          </div>
+          </div>
         </div>
         </div>
       </form>

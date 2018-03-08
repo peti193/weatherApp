@@ -28,7 +28,8 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
 
             // Weather conditions
             weather_data = [];
-
+            $scope.weatherStatus = $scope.data.data.weather[0].description;
+            
             // Nice weather condition. False by default.
             nice_weather = false;
 
@@ -37,6 +38,8 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
 
             // User can able to set weather condition
             $scope.weather_status = ["Rain", "Snow", "Fog", "Sunny"];
+
+            $scope.windSpeed = $scope.data.data.wind.speed;
 
             // Iterate through the response object values
             // Than pick up the proper group of data (weather conditions, weather main information)
@@ -75,7 +78,7 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
                  $scope.niceDayMsg = "Not a nice day";
               }
 
-              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon) {
+              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon && $scope.niceWind) {
                 $scope.niceDayMsg = "Nice day";
               }
               else {
@@ -87,14 +90,13 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
             $scope.$watch('niceDayHum', function(newValue) {
               if (newValue <= max_hum && newValue >= min_hum) {
                   $scope.niceHum = true;
-                  $scope.user_hum = newValue;
               } else {
                  $scope.niceHum = false;
                  $scope.niceDayMsg = "Not a nice day";
 
               }
 
-              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon) {
+              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon && $scope.niceWind) {
                  $scope.niceDayMsg = "Nice day";
               }
               else {
@@ -114,7 +116,27 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
 
               }
 
-              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon) {
+              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon && $scope.niceWind) {
+                $scope.niceDayMsg = "Nice day";
+              }
+              else {
+                $scope.niceDayMsg = "Not a nice day";
+              }
+            });
+
+            // Windspeed 
+            $scope.$watch('windSpeedU', function (newValue) {
+              if (newValue < 10 && newValue >= 0) {
+                $scope.niceDayMsg = "Nice day";
+                $scope.niceWind = true;
+              }
+              else {
+                $scope.niceWind = false;
+                 $scope.niceDayMsg = "Not a nice day";
+
+              }
+
+              if ($scope.niceTemp && $scope.niceHum && $scope.niceCon && $scope.niceWind) {
                 $scope.niceDayMsg = "Nice day";
               }
               else {
@@ -125,7 +147,7 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
             // If the weather condition icon code is in the list
             if (wcon == "01d" || wcon == "01n" || wcon == "02d" || wcon == "02n" || wcon == "03d" || wcon == "04d" || wcon == "04n") {
               // And the temperature is nice 
-              if (nice_temp) {
+              if (nice_temp && windspeed < 10) {
                 if (nice_hum) {
                    $scope.niceDayMsg = "Nice day";
                 }
