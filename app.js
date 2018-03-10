@@ -53,6 +53,8 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
             maxWindSpeed = 10
             optimalWindSpeed = curr_wind_speed < maxWindSpeed ? true : false;
 
+            $scope.userNiceDayMsg = "Please fill the form";
+
             // Watch temperature changes: By user input
             $scope.$watch('niceDayTemp', function(newValue) {
               if (newValue <= max_temp && newValue >= min_temp) {
@@ -126,6 +128,16 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
               }
               else {
                 $scope.userNiceDayMsg = "Not a nice day";
+              }
+            });
+
+            // User value 
+            $scope.$watch('userNiceDayMsg', function (newValue) {
+              body = $("body");
+              if (newValue == "Nice day") {
+                body.addClass("animate");
+              } else {
+                body.removeClass("animate");
               }
             });
 

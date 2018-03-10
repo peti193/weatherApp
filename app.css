@@ -5,6 +5,21 @@
 	margin-right: auto;
 }
 
+.animate {
+	background-color: #FF9100;
+	transition: all 2s ease;
+}
+
+input[name="userNiceDayMsg"] {
+	padding-left: 20px;
+}
+
+#niceDayMsg {
+	font-size: 1rem;
+	position: relative;
+	top: 0;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	.center {
