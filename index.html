@@ -38,11 +38,12 @@
             <select ng-model="w_status" id="weather_status" class="form-control">
               <option ng-repeat="condition in weather_status" value="{{condition}}">{{condition}}</option>
             </select>
-            <span class="cmd-help">You selected: {{w_status}}</span>
-            <span ng-show="!w_status.length">Required - For a positiv result should choose one</span>
+            <span class="bmd-help">You selected: {{w_status}}</span>
+            <span class="bmd-help" ng-show="!w_status.length">Required - For a positiv result should choose one</span>
         </div>
         <div class="alert alert-dark" role="alert">
-          <div class="alert alert-success" id="alertNiceDay" role="alert">{{niceDayMsg}}</div>
+          <div class="alert alert-success" id="alertNiceDay" role="alert">Today is a: {{niceDayMsg}}</div>
+          <div class="alert alert-success" id="alertNiceDay" role="alert"> Your choise: {{userNiceDayMsg}}</div>
           <div class="p-3 mb-2 bg-dark text-white">
             <div>Now</div>
           <div>
@@ -50,15 +51,17 @@
             <span ng-repeat= "item in data">
               {{item.main.temp}}
             </span>
+            <span>C</span>
           </div>
           <div>Humidity:
             <span ng-repeat= "item in data">
               {{item.main.humidity}}
             </span>
+            <span>%</span>
           </div>
           <div>
              Windspeed:
-            <span>{{windSpeed}}</span>
+            <span>{{windSpeed}} m/s</span>
           </div>
           <div>
              Visbility:
