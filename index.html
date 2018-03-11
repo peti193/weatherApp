@@ -35,7 +35,8 @@
         </div>
         <div class="form-group">
           <label for="weather_status" class="bmd-label-floating">Weather Condition</label>
-            <select ng-model="w_status" id="weather_status" class="form-control">
+            <select ng-model="w_status" id="weather_status" class="form-control" ng-init="w_status='Choose a condition'">
+              <option ng-selected="true" value="Choose a condition">Choose a condition</option>
               <option ng-repeat="condition in weather_status" value="{{condition}}">{{condition}}</option>
             </select>
             <span class="bmd-help">You selected: {{w_status}}</span>
@@ -83,6 +84,7 @@
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
     <script>$(document).ready(function() {
       $('body').bootstrapMaterialDesign(); 
+      $("input[name='userNiceDayMsg']").val("Please fill the form");
       });
     </script>
   </body>
