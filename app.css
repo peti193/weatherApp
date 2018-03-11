@@ -20,6 +20,10 @@ input[name="userNiceDayMsg"] {
 	top: 0;
 }
 
+.sad-bg {
+	background-color: #424242;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	.center {

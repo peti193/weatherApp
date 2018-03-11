@@ -26,7 +26,6 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
             $scope.weatherStatus = $scope.data.data.weather[0].description;
 
             // Weather Condition Icon code
-            //wcon = "";
             wcon = $scope.data.data.weather[0].icon
 
             // User can able to set weather condition
@@ -37,8 +36,8 @@ app.controller("getWeather", ["$scope", "$http", "$window", function($scope, $ht
             $scope.windSpeed = $scope.data.data.wind.speed
 
             // The nice temperature range: nice_temp calculation
-            curr_temp = $scope.data.data.main.humidity;
-            min_temp = 20;
+            curr_temp = $scope.data.data.main.temp;
+            min_temp = 15;
             max_temp = 40;
             nice_temp = curr_temp > min_temp && curr_temp < max_temp ? true : false;
 
